@@ -1,12 +1,12 @@
 package com.workshopmongo.services;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.workshopmongo.domain.Post;
-import com.workshopmongo.domain.User;
 import com.workshopmongo.repository.PostRepository;
 import com.workshopmongo.services.exception.ObjectNotFoundException;
 
@@ -26,4 +26,8 @@ public class PostService {
 		}
 	}
 		
+	public List<Post> findByTitle(String texto) {
+		return postRepository.findByTitleContainingIgnoreCase(texto);
+	}
+	
 }
